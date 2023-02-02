@@ -61,13 +61,13 @@ app = FastAPI()
 #         soup = BeautifulSoup(page.content, 'html5lib')
 #         send_database(soup)
 
-#     day_name = datetime.datetime.now().strftime("%w")
-#     hour = datetime.datetime.now().strftime("%H")
-#     if day_name == 5 or day_name == 6:
-#         pass
-#     else:
-#         keep_scraping()
-#         print("Scraping Working")
+    # day_name = datetime.datetime.now().strftime("%w")
+    # hour = datetime.datetime.now().strftime("%H")
+    # if day_name == 5 or day_name == 6:
+    #     pass
+    # else:
+    #     keep_scraping()
+    #     print("Scraping Working")
         # if 10 < int(hour) < 15:
         #     keep_scraping()
         # elif int(hour) == 16:
@@ -78,13 +78,49 @@ app = FastAPI()
 
 @app.get("/stockprices")
 def get_stock_prices():
+    page = requests.get("https://www.dsebd.org/latest_share_price_scroll_l.php")
+    soup = BeautifulSoup(page.content, 'html5lib')
+    # send_database(soup)
     # stock_info_list = []
     # for i in StockPrices.objects:
     #     stock_info_list.append({
     #         "stock_name": i.stock_name,
     #         "price": i.stock_last_trade_price
     #     })
-    return "Hello Sukanto , I am From AWS "
+    return soup
+
+# @app.post("/signin")
+# def sign_in(email, password):
+#     all_mail = []
+#     for user in SignUp.objects:
+#         all_mail.append(user.email)
+#     if email in all_mail:
+#         index_no = all_mail.index(email)
+#         user_object = SignUp.objects[index_no]
+#         if user_object.email == email and password == user_object.password:
+#             return {"Successfully Signed In"}
+#         else:
+#             return {"Please Enter Valid Mail And Password"}
+#     else:
+#         return {"Please Enter Valid Mail And Password"}
+
+
+# @app.post("/signup")
+# def sign_up(email, first_name, last_name, password):
+#     all_mail = []
+#     for mail in SignUp.objects:
+#         all_mail.append(mail.email)
+#     if email in all_mail:
+#         return {"Already Have An Account"}
+#     else:
+#         signup = SignUp()
+#         signup.email = email
+#         signup.first_name = first_name
+#         signup.last_name = last_name
+#         signup.password = password
+#         signup.save()
+#         return {"SignUp Complete"}
+
 
 # def run_scraping_machine():
 #     while True:

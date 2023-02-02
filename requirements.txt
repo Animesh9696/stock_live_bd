@@ -3,3 +3,4 @@ uvicorn
 mongoengine
 bs4
 requests
+html5lib
