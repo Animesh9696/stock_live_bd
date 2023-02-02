@@ -84,7 +84,7 @@ def get_stock_prices():
     #         "stock_name": i.stock_name,
     #         "price": i.stock_last_trade_price
     #     })
-    return "Hello From Animesh"
+    return "Hello Sukanto , I am From AWS "
 
 # def run_scraping_machine():
 #     while True:
