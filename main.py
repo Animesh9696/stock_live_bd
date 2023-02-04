@@ -61,13 +61,13 @@ app = FastAPI()
 #         soup = BeautifulSoup(page.content, 'html5lib')
 #         send_database(soup)
 
-#     day_name = datetime.datetime.now().strftime("%w")
-#     hour = datetime.datetime.now().strftime("%H")
-#     if day_name == 5 or day_name == 6:
-#         pass
-#     else:
-#         keep_scraping()
-#         print("Scraping Working")
+    # day_name = datetime.datetime.now().strftime("%w")
+    # hour = datetime.datetime.now().strftime("%H")
+    # if day_name == 5 or day_name == 6:
+    #     pass
+    # else:
+    #     keep_scraping()
+    #     print("Scraping Working")
         # if 10 < int(hour) < 15:
         #     keep_scraping()
         # elif int(hour) == 16:
@@ -78,15 +78,13 @@ app = FastAPI()
 
 @app.get("/stockprices")
 def get_stock_prices():
-    page = requests.get("https://www.dsebd.org/latest_share_price_scroll_l.php")
-    soup = BeautifulSoup(page.content, 'html5lib')
     # stock_info_list = []
     # for i in StockPrices.objects:
     #     stock_info_list.append({
     #         "stock_name": i.stock_name,
     #         "price": i.stock_last_trade_price
     #     })
-    return soup.text
+    return "Hello Sukanto , I am From AWS "
 
 # def run_scraping_machine():
 #     while True:
