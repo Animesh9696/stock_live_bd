@@ -78,13 +78,15 @@ app = FastAPI()
 
 @app.get("/stockprices")
 def get_stock_prices():
+    page = requests.get("https://www.dsebd.org/latest_share_price_scroll_l.php")
+    soup = BeautifulSoup(page.content, 'html5lib')
     # stock_info_list = []
     # for i in StockPrices.objects:
     #     stock_info_list.append({
     #         "stock_name": i.stock_name,
     #         "price": i.stock_last_trade_price
     #     })
-    return "Hello Sukanto , I am From AWS "
+    return soup.text
 
 # def run_scraping_machine():
 #     while True:
