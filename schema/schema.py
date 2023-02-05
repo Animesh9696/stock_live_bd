@@ -1,13 +1,5 @@
 from mongoengine import Document, StringField, EmailField
 
-
-class SignUp(Document):
-    email = EmailField(required=True, unique=True)
-    first_name = StringField(max_length=50)
-    last_name = StringField(max_length=50)
-    password = StringField(max_length=50)
-
-
 class StockPrices(Document):
     stock_name = StringField(max_length=50)
     stock_open_price = StringField(max_length=50)
