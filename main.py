@@ -83,7 +83,15 @@ def get_stock_prices():
     for i in StockPrices.objects:
         stock_info_list.append({
             "stock_name": i.stock_name,
-            "price": i.stock_last_trade_price
+            "stock_last_trade_price": i.stock_last_trade_price,
+            "stock_high_price": i.stock_high_price,
+            "stock_low_price": i.stock_low_price,
+            "stock_close_price": i.stock_close_price,
+            "stock_previous_close": i.stock_previous_close,
+            "percent_change": i.percent_change,
+            "trade_number": i.trade_number,
+            "value": i.value,
+            "stock_volume": i.stock_volume,
         })
     return stock_info_list
 
