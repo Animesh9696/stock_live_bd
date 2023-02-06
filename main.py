@@ -26,36 +26,36 @@ def scraping_machine():
     def send_database(soup):
         all = soup.find_all(class_="table-responsive")
         new_all = all[0].find_all("tr")
-        # all_items = StockPrices.objects
-        # if date.today().day == 1:
-            # all_items.drop_collection()
-        for i in range(1, len(new_all)):
-            one_tr = new_all[i]
-            stock_prices = StockPrices()
-            stock_prices.stock_name = one_tr.find_all("td")[1].text.strip()
-            stock_prices.stock_last_trade_price = one_tr.find_all("td")[2].text.strip()
-            stock_prices.stock_high_price = one_tr.find_all("td")[3].text.strip()
-            stock_prices.low_price = one_tr.find_all("td")[4].text.strip()
-            stock_prices.stock_close_price = one_tr.find_all("td")[5].text.strip()
-            stock_prices.stock_previous_close = one_tr.find_all("td")[6].text.strip()
-            stock_prices.percent_change = one_tr.find_all("td")[7].text.strip()
-            stock_prices.trade_number = one_tr.find_all("td")[8].text.strip()
-            stock_prices.value = one_tr.find_all("td")[9].text.strip()
-            stock_prices.stock_volume = one_tr.find_all("td")[10].text.strip()
-            stock_prices.save()
-        # else:
-        #     for i in range(1, len(new_all)):
-        #         one_tr = new_all[i]
-        #         all_items[i - 1].update(stock_name=one_tr.find_all("td")[1].text.strip(),
-        #                                 stock_last_trade_price=one_tr.find_all("td")[2].text.strip(),
-        #                                 stock_high_price=one_tr.find_all("td")[3].text.strip(),
-        #                                 stock_low_price=one_tr.find_all("td")[4].text.strip(),
-        #                                 stock_close_price=one_tr.find_all("td")[5].text.strip(),
-        #                                 stock_previous_close=one_tr.find_all("td")[6].text.strip(),
-        #                                 percent_change=one_tr.find_all("td")[7].text.strip(),
-        #                                 trade_number=one_tr.find_all("td")[8].text.strip(),
-        #                                 value=one_tr.find_all("td")[9].text.strip(),
-        #                                 stock_volume=one_tr.find_all("td")[10].text.strip())
+        all_items = StockPrices.objects
+        if date.today().day == 1:
+            all_items.drop_collection()
+            for i in range(1, len(new_all)):
+                one_tr = new_all[i]
+                stock_prices = StockPrices()
+                stock_prices.stock_name = one_tr.find_all("td")[1].text.strip()
+                stock_prices.stock_last_trade_price = one_tr.find_all("td")[2].text.strip()
+                stock_prices.stock_high_price = one_tr.find_all("td")[3].text.strip()
+                stock_prices.low_price = one_tr.find_all("td")[4].text.strip()
+                stock_prices.stock_close_price = one_tr.find_all("td")[5].text.strip()
+                stock_prices.stock_previous_close = one_tr.find_all("td")[6].text.strip()
+                stock_prices.percent_change = one_tr.find_all("td")[7].text.strip()
+                stock_prices.trade_number = one_tr.find_all("td")[8].text.strip()
+                stock_prices.value = one_tr.find_all("td")[9].text.strip()
+                stock_prices.stock_volume = one_tr.find_all("td")[10].text.strip()
+                stock_prices.save()
+        else:
+            for i in range(1, len(new_all)):
+                one_tr = new_all[i]
+                all_items[i - 1].update(stock_name=one_tr.find_all("td")[1].text.strip(),
+                                        stock_last_trade_price=one_tr.find_all("td")[2].text.strip(),
+                                        stock_high_price=one_tr.find_all("td")[3].text.strip(),
+                                        stock_low_price=one_tr.find_all("td")[4].text.strip(),
+                                        stock_close_price=one_tr.find_all("td")[5].text.strip(),
+                                        stock_previous_close=one_tr.find_all("td")[6].text.strip(),
+                                        percent_change=one_tr.find_all("td")[7].text.strip(),
+                                        trade_number=one_tr.find_all("td")[8].text.strip(),
+                                        value=one_tr.find_all("td")[9].text.strip(),
+                                        stock_volume=one_tr.find_all("td")[10].text.strip())
 
     def keep_scraping():
         page = requests.get("https://www.dsebd.org/latest_share_price_scroll_l.php")
